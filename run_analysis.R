@@ -38,22 +38,26 @@ rm(y_train,y_test)
 #
 # The resulting merged sets, subject, X and y each have 10299 observations.
 #
+# Next, we apply the variable names we cleaned up in an earlier step (cleaning_variable_names.R).
 #
-# Next, we apply the variable names in varNames to the data frame named X.
-# When loaded, the variable names are simply V1 ... V561. After this operation
-# they will have more meaningful names.
+# When loaded, the variable names in master are simply V1 ... V561.
 #
-colnames(subject) <- 'volunteer_code'
-colnames(y) <- 'activity_code'
-colnames(X) <- varNames$good_var_name
+# The list of 561 cleaned variable names is contained in the dataframe 
+# varNames created cleaning_variable_names.R. When these 
+#
+colnames(subject) <- 'subject.id'
+colnames(y) <- 'activity.code'
+colnames(X) <- varNames$good.var.name
 #
 # And, while we're at it, let's add to y a variable with the activity named
-# to make it easier to understand what activities are being performed
+# to make it easier to understand what activities are being performed.
+#
+# This is actually what is required by Step 3. 
 #
 y$activity <- activityCodes$activity[y$activity]
 #
 # Next, we will combine the three sets into a single master data frame
-# containing the volunteer_code from subject, the activity_code and the activity 
+# containing the subject.code from subject, the activity.code and the activity 
 # from y, and the 561 variables from X for a total of 564 variables 
 # (and 10299 observations)
 #
@@ -67,9 +71,9 @@ dim(master)
 # column number of the variable in the dataframe master. This can be useful to us
 # in the next step.
 #
-varNames$col_number_in_master <- varNames$column_number_in_X + 3
+varNames$col.number.in.master <- varNames$column.number.in.X + 3
 #
-# We need to add the varable in subject (subject_code) and in activity (activity_code)
+# We need to add the varable in subject (subject.code) and in activity (activity.code)
 # to the table with the list of variables
 
 #
@@ -81,7 +85,7 @@ rm(X, y, subject)
 #
 # 2 Extract only the measurements on the mean and standard deviation for each measurement. 
 #
-# To do this next step, I'm going to use dplyr. This assumes dplyr is installed.
+# To do this next step, I'm going to use dplyr. (This assumes dplyr is installed.)
 #
 library(dplyr)
 #
@@ -111,41 +115,38 @@ myFind <- function(pattern, target) {
   isFound  
 }
 myFindMean <- function(target) {
-  myFind('mean()',target)
+  myFind('mean\\(\\)',target)
 }
 myFindStd <- function(target) {
-  myFind('std()',target) 
-}
-myFindGrav <- function(target) {
-  myFind('gravityMean',target) 
+  myFind('std\\(\\)',target) 
 }
 #
 # And then use these functions to create three new columns in varNames that will
 # indicate that the variable is a mean, a standard deviation or a gravityMean.
 #
-varNames['a_mean'] <- sapply(varNames$var_name, myFindMean)
-varNames['a_std'] <- sapply(varNames$var_name, myFindStd)
-varNames['a_gravityMean'] <- sapply(varNames$var_name, myFindGrav)
+varNames['a.mean'] <- sapply(varNames$cleaner.var.name, myFindMean)
+varNames['a.std'] <- sapply(varNames$cleaner.var.name, myFindStd)
 #
 # Create a vector containing the names of the variables we want to keep
 #
 # First, we create a vector identifying the means and stds
 # 
-varNames['mean_or_std'] <- varNames$a_mean | varNames$a_std | varNames$a_gravityMean
-sum(varNames$mean_or_std)
+varNames['mean.or.std'] <- varNames$a.mean | varNames$a.std 
+sum(varNames$mean.or.std)
 #
-# The sum function reports that there are 85 variables in the data frame
+# The sum function reports that there are 66 variables in the data frame
 # that are means or stds. 
 #
-# add subject_code, activity_code and activity which are columns 1, 2 and 3
+# add subject.code, activity.code and activity which are columns 1, 2 and 3
 #
-keepThese <- c(TRUE, TRUE, TRUE, varNames$mean_or_std)
+keepThese <- c(TRUE, TRUE, TRUE, varNames$mean.or.std)
 #
 # Now, we'll use dplyr to select the variables we want to delete or keep
 # I'm going to overwrite the original master with the abbreviated
-# collection of variables
+# collection of variables. varNames column 6 is the column position in
+# the master file that is to be kept.
 #
-keepThese <- c(1,2,3,varNames[varNames$mean_or_std==TRUE,5])
+keepThese <- c(1,2,3,varNames[varNames$mean.or.std==TRUE,6])
 master <- select(master, keepThese)
 #
 # END of processing to accomplish objective 2 (and 3 and 4)
@@ -155,27 +156,40 @@ master <- select(master, keepThese)
 # 3 Uses descriptive activity names to name the activities in the data set
 # 4 Appropriately labels the data set with descriptive variable names. 
 #
-# At this point, I think we've accomplished objectives 3 and 4.
-# The column named 'activity' in master is a textual version of the activity
-# The columns taken from X all now have descriptive names (incomprehensible,
-# perhaps, but descriptive).
+# At this point, we've accomplished objectives 3 and 4. The activities
+# were completed out of order but have been completed.
 #
+# Step 3 was completed in the Step 1 operations when the variable 
+# activity was added to the y dataset. 
+#
+# Step 4 was completed in the Step 2 operations. I used the cleaned
+# variable names to select the variables that were to be retained.
+# 
 # So we're going on without further activity to step 5
 #
 # END of objectives 3 and 4
 #
 ##################################################################################
 #
-# 5 From the data set in step 4, creates a second, independent tidy data 
+# 5 From the data set in step 4, create a second, independent tidy data 
 # set with the average of each variable for each activity and each subject.
 #
-# dplyr makes this last step very easy.
+# dplyr makes this last step very easy. I'm going to drop the activity code
+# from the resulting table since it is effectively included in the activity
 #
-tidyDS <- master %>% select(-activity_code) %>% group_by(activity,volunteer_code) %>% summarise_each(funs(mean))
-view(tidyDS)
+tidyDS <- master %>% select(-activity.code) %>% group_by(activity,subject.id) %>% summarise_each(funs(mean))
 #
-# the resulting tidyDS is arranged by activity and then volunteer (there were 30)
+# the resulting tidyDS is arranged by activity and then subject (there were 30)
 # following that there are the means of the 85 means and standard deviations taken from X.
+#
+# all that remains now is to write the table out into a form that can be easily
+# loaded into R
+#
+write.table(tidyDS, file='./data/TidyDS.dat',sep=',')
+write.csv(tidyDS, file='./data/TidyDS.csv')
+#
+# the tidy data set can be reloaded into R using a command similar to the following:
+# tidyData <- read.table('./data/TidyDS.dat', header=TRUE, sep=',')
 #
 # END of objective 5
 #

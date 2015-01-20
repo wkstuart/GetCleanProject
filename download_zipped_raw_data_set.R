@@ -17,5 +17,7 @@ list.files('./data')
 DateDownloaded <- date()
 DateDownloaded
 #
+# The zipped file was subsequently unzipped into the /data directory
+#
 # EOF
 #
