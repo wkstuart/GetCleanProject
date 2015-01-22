@@ -32,18 +32,18 @@ The 68 features or variables summarized in the dataset are the following:
       
 **Note 3:** The abbreviation 'acc' refers to linear acceleration
 
-**Note 4:** All of the remaining 66 measured variables are MEANS of the multiple and previously normalized mean or standard deviation measurements provided for each selected, named "feature" in the raw data filescomputed for each subject, activity pairing.
+**Note 4:** All of the remaining 66 measured variables are MEANS of the multiple and previously normalized mean or standard deviation measurements provided for each selected, named "feature" in the raw data files computed for each subject, activity pairing.
 
 **Note 5:** None of the 66 measured variables has a unit.
         
 01 activity
   the activity performed by the subject (a fixed variable)
-    WALKING
-    WALKING_UPSTAIRS
-    WALKING_DOWNSTAIRS
-    SITTING
-    STANDING
-    LAYING 
+*    WALKING
+*    WALKING_UPSTAIRS
+*    WALKING_DOWNSTAIRS
+*    SITTING
+*    STANDING
+*    LAYING 
     
 02 subject.id
   the subject identifier [1:30] (a fixed variable)
