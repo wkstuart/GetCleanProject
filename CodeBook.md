@@ -42,7 +42,12 @@ Note 2: The abbreviation 'acc' refers to linear acceleration
     
 02 subject.id
   the subject identifier [1:30]
-  
+
+All of the remaining 66 measured variables are MEANS of the 
+multiple mean or standard deviation measurements provided 
+for each selected, named "feature" in the raw data files
+computed for each subject, activity pairing.
+
 03 t.body.acc.mean.x
   
 04 t.body.acc.mean.y
