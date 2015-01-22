@@ -8,19 +8,19 @@ The data for this project was provided by the Coursera course instructors. The d
 
 The extracted data (in /data) has the following structure:
 * __/UCI HAR Dataset
-* ____/test                     the test data sets (each file contains 7352 observations)
+* ____/test                     > the test data sets (each file contains 7352 observations)
 * ______/Inertial Signals
-* ______subject_test.txt        dataset containing an id for the subject performing each observation
-* ______X_test.txt              dataset containing 561 measurements for each observation
-* ______y_test.txt              dataset containing the activity performed for each observation
-* ____/train                    the training data sets (each file contains 7352 observations)
+* ______subject_test.txt        > dataset containing an id for the subject performing each observation
+* ______X_test.txt              > dataset containing 561 measurements for each observation
+* ______y_test.txt              > dataset containing the activity performed for each observation
+* ____/train                    > the training data sets (each file contains 7352 observations)
 * ______/Inertial Signals
-* ______subject_test.txt        same as test data sets
+* ______subject_test.txt        > same as test data sets
 * ______X_test.txt              
 * ______y_test.txt    
-* ____activity_labels.txt       textual description of the six numbered activities
-* ____features.txt              a list of the 561 measurements included in X_test.txt  
-* ____features_info.txt         a codebook for the 561 measurements
+* ____activity_labels.txt       > textual description of the six numbered activities
+* ____features.txt              > a list of the 561 measurements included in X_test.txt  
+* ____features_info.txt         > a codebook for the 561 measurements
 * ____README.txt
 
 The data is from the Center for Machine Learning and Intelligent Systems at the Donald Bren School of Information and Computer Sciences at the University of California, Irvine.
