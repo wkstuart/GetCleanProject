@@ -308,11 +308,14 @@ tidyDS <- master %>% select(-activity.code) %>% group_by(activity,subject.id) %>
 write.table(tidyDS, file='./data/TidyDS.txt',row.name=FALSE)
 #
 # The tidy data set can be reloaded into R using a command similar to the following:
-# tidyData <- read.table('./data/TidyDS.dat', header=TRUE, sep=',')
+# tidyData <- read.table('./data/TidyDS.txt', header=TRUE, sep=',')
 #
 # END OF WORK TO ACCOMPLISH
 # OBJECTIVE 5: Create a second, independent tidy data set with the average
 #              of each variable for each activity and each subject.
+#
+# We now have a tidy dataset named TidyDS.txt containing 180
+# observations of 68 variables.
 #
 ##################################################################################
 # 

@@ -1,4 +1,4 @@
-# JH_GetCleanProj
+# README.md
 
 This GIT repository contains all of the components of the required project for Getting and Cleaning Data, a Coursera course from Johns Hopkins University and the third course of a nine part series of courses on Data Science.
 
@@ -7,21 +7,21 @@ This GIT repository contains all of the components of the required project for G
 The data for this project was provided by the Coursera course instructors. The data set downloads as a single zipped file with multiple subdirectories. The zipped file (ProjectData.zip) was subsequently unzipped into the /data directory.
 
 The extracted data (in /data) has the following structure:
-  /UCI HAR Dataset
-    /test                     the test data sets (each file contains 7352 observations)
-      /Inertial Signals
-      subject_test.txt        dataset containing an id for the subject performing each observation
-      X_test.txt              dataset containing 561 measurements for each observation
-      y_test.txt              dataset containing the activity performed for each observation
-    /train                    the training data sets (each file contains 7352 observations)
-      /Inertial Signals
-      subject_test.txt        same as test data sets
-      X_test.txt              
-      y_test.txt    
-    activity_labels.txt       textual description of the six numbered activities
-    features.txt              a list of the 561 measurements included in X_test.txt  
-    features_info.txt         a codebook for the 561 measurements
-    README.txt
+*/UCI HAR Dataset
+*  /test                     the test data sets (each file contains 7352 observations)
+*    /Inertial Signals
+*    subject_test.txt        dataset containing an id for the subject performing each observation
+*     X_test.txt              dataset containing 561 measurements for each observation
+*     y_test.txt              dataset containing the activity performed for each observation
+*  /train                    the training data sets (each file contains 7352 observations)
+*    /Inertial Signals
+*    subject_test.txt        same as test data sets
+*     X_test.txt              
+*     y_test.txt    
+*  activity_labels.txt       textual description of the six numbered activities
+*  features.txt              a list of the 561 measurements included in X_test.txt  
+*  features_info.txt         a codebook for the 561 measurements
+*  README.txt
 
 The data is from the Center for Machine Learning and Intelligent Systems at the Donald Bren School of Information and Computer Sciences at the University of California, Irvine.
 
@@ -31,7 +31,7 @@ For the purposes of analysis, the raw data sets were randomly partitioned into a
 
 Citation for the data: [1] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
 
-More complete information on the data can be found [here] (http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones#)
+More complete information on the data can be found [here.] (http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones#)
 
 ##Acquiring the raw data from the web
 

@@ -20,19 +20,24 @@ More complete information on the data can be found [here] (http://archive.ics.uc
 
 #The tidy data set
 
-The tidy data set is a table of 180 cases (30 subjects x 6 activities) with mean values for 68 features or variables. There is one record for each of the 30 subjects performing each of the 6 activities.
+The tidy data set is a table of 180 cases (30 subjects x 6 activities) with mean values for 66 features or variables. There is one record for each of the 30 subjects performing each of the 6 activities.
 
-All values for the 64 features or variables in this dataset are means of previously normalized values (unitless values from -1 to 1) from 64 of the 561 features provided in the original data sets. 
+**All values for the 66 features or measured variables in this dataset are means of previously normalized values (unitless values from -1 to 1) from 66 of the 561 features provided in the original data sets.**
 
 The 68 features or variables summarized in the dataset are the following:
 
-Note 1: A leading t in the variable name indicates a time domain variable.
-        A leading f in the variable name indicates a frequency domain variable.
+**Note 1:** A leading t in the variable name indicates a time domain variable.
+
+**Note 2:** A leading f in the variable name indicates a frequency domain variable.
       
-Note 2: The abbreviation 'acc' refers to linear acceleration
+**Note 3:** The abbreviation 'acc' refers to linear acceleration
+
+**Note 4:** All of the remaining 66 measured variables are MEANS of the multiple and previously normalized mean or standard deviation measurements provided for each selected, named "feature" in the raw data filescomputed for each subject, activity pairing.
+
+**Note 5:** None of the 66 measured variables has a unit.
         
 01 activity
-  the activity performed by the subject
+  the activity performed by the subject (a fixed variable)
     WALKING
     WALKING_UPSTAIRS
     WALKING_DOWNSTAIRS
@@ -41,12 +46,9 @@ Note 2: The abbreviation 'acc' refers to linear acceleration
     LAYING 
     
 02 subject.id
-  the subject identifier [1:30]
+  the subject identifier [1:30] (a fixed variable)
 
-All of the remaining 66 measured variables are MEANS of the 
-multiple mean or standard deviation measurements provided 
-for each selected, named "feature" in the raw data files
-computed for each subject, activity pairing.
+All of the remaining variables are measured variables.
 
 03 t.body.acc.mean.x
   
